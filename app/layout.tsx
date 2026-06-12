@@ -3,11 +3,18 @@ import { Inter } from "next/font/google";
 import { JsonLd } from "@/components/json-ld";
 import {
   CONTACT_EMAIL,
+  OG_DESCRIPTION,
+  OG_TITLE,
   SEO_DESCRIPTION,
   SEO_KEYWORDS,
   SEO_TITLE,
   SITE_NAME,
   SITE_URL,
+  SOCIAL_IMAGE_ALT,
+  SOCIAL_IMAGE_HEIGHT,
+  SOCIAL_IMAGE_PATH,
+  SOCIAL_IMAGE_URL,
+  SOCIAL_IMAGE_WIDTH,
 } from "@/lib/seo";
 import "./globals.css";
 
@@ -17,8 +24,14 @@ const inter = Inter({
   display: "swap",
 });
 
-const ogImageAlt =
-  "Sheng Thao — Oakland's first recalled mayor, now facing an 8-count federal indictment";
+const socialImage = {
+  url: SOCIAL_IMAGE_PATH,
+  secureUrl: SOCIAL_IMAGE_URL,
+  width: SOCIAL_IMAGE_WIDTH,
+  height: SOCIAL_IMAGE_HEIGHT,
+  alt: SOCIAL_IMAGE_ALT,
+  type: "image/webp",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,38 +61,38 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: SEO_TITLE,
-    description: SEO_DESCRIPTION,
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_US",
-    images: [
-      {
-        url: "/sheng-thao.webp",
-        width: 2560,
-        height: 1440,
-        alt: ogImageAlt,
-        type: "image/webp",
-      },
-      {
-        url: "/og-image.jpg",
-        width: 2560,
-        height: 1440,
-        alt: ogImageAlt,
-        type: "image/jpeg",
-      },
-    ],
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: SEO_TITLE,
-    description: SEO_DESCRIPTION,
-    images: ["/sheng-thao.webp"],
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: {
+      url: SOCIAL_IMAGE_PATH,
+      secureUrl: SOCIAL_IMAGE_URL,
+      width: SOCIAL_IMAGE_WIDTH,
+      height: SOCIAL_IMAGE_HEIGHT,
+      alt: SOCIAL_IMAGE_ALT,
+      type: "image/webp",
+    },
   },
   other: {
     "contact:email": CONTACT_EMAIL,
     "llms:txt": `${SITE_URL}/llms.txt`,
+    "og:image": SOCIAL_IMAGE_URL,
+    "og:image:secure_url": SOCIAL_IMAGE_URL,
+    "og:image:type": "image/webp",
+    "og:image:width": String(SOCIAL_IMAGE_WIDTH),
+    "og:image:height": String(SOCIAL_IMAGE_HEIGHT),
+    "og:image:alt": SOCIAL_IMAGE_ALT,
+    "twitter:image": SOCIAL_IMAGE_URL,
+    "twitter:image:src": SOCIAL_IMAGE_URL,
   },
 };
 

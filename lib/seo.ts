@@ -7,6 +7,26 @@ export const CONTACT_EMAIL = "contact@shengthaofiles.com";
 
 export const SPONSOR = "Americans for Opportunity";
 
+/** Canonical social share image — must stay at /sheng-thao.webp in public/ */
+export const SOCIAL_IMAGE_PATH = "/sheng-thao.webp";
+export const SOCIAL_IMAGE_URL = `${SITE_URL}${SOCIAL_IMAGE_PATH}`;
+export const SOCIAL_IMAGE_WIDTH = 2560;
+export const SOCIAL_IMAGE_HEIGHT = 1440;
+export const SOCIAL_IMAGE_ALT =
+  "Sheng Thao, former Mayor of Oakland — recalled and federally indicted on 8 corruption counts";
+
+export const SEO_TITLE =
+  "THE SHENG THAO FILES: Recalled, Indicted & Exposed";
+
+export const SEO_DESCRIPTION =
+  "Oakland's first recalled mayor faces 8 federal fraud counts. FBI raids, $95K in bribes, Duong family pay-to-play, 60.6% voted her out. The complete Sheng Thao dossier — trial pending.";
+
+export const OG_TITLE =
+  "She Sold Out Oakland. The Proof Is Here. | The Sheng Thao Files";
+
+export const OG_DESCRIPTION =
+  "8-count federal indictment. FBI raids on her home. $95K laundered through a no-show job. 86,535 voters said remove her. Read the full Sheng Thao corruption record before the trial.";
+
 export const SEO_KEYWORDS = [
   "Sheng Thao",
   "Sheng Thao Oakland",
@@ -44,12 +64,6 @@ export const SEO_KEYWORDS = [
   "Oakland mayor federal indictment 2025",
 ] as const;
 
-export const SEO_DESCRIPTION =
-  "The Sheng Thao Files: the complete documented record on Sheng Thao — Oakland's first recalled mayor. Federal indictment, Duong family bribery scheme, straw-donor laundering, FBI raids, 60.6% recall vote, and trial tracker.";
-
-export const SEO_TITLE =
-  "The Sheng Thao Files | Sheng Thao Oakland Corruption, Indictment & Recall Record";
-
 export function getJsonLd() {
   return [
     {
@@ -77,9 +91,11 @@ export function getJsonLd() {
       about: { "@id": `${SITE_URL}/#person` },
       primaryImageOfPage: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/sheng-thao.webp`,
-        contentUrl: `${SITE_URL}/sheng-thao.webp`,
-        caption: "Sheng Thao, former Mayor of Oakland, California",
+        url: SOCIAL_IMAGE_URL,
+        contentUrl: SOCIAL_IMAGE_URL,
+        width: SOCIAL_IMAGE_WIDTH,
+        height: SOCIAL_IMAGE_HEIGHT,
+        caption: SOCIAL_IMAGE_ALT,
       },
       inLanguage: "en-US",
       dateModified: "2025-06-12",
