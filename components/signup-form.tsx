@@ -68,6 +68,7 @@ export function SignupForm() {
   const [successOpen, setSuccessOpen] = useState(false);
   const [submittedName, setSubmittedName] = useState("");
   const [showConfetti, setShowConfetti] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -80,8 +81,23 @@ export function SignupForm() {
   });
 
   const onSubmit = async (data: SignupFormData) => {
-    // MVP: local state only. Connect to Resend, Supabase, or ConvertKit here.
-    await new Promise((r) => setTimeout(r, 800));
+    setSubmitError(null);
+
+    const response = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = (await response.json()) as {
+      success?: boolean;
+      error?: string;
+    };
+
+    if (!response.ok || !result.success) {
+      setSubmitError(result.error ?? "Something went wrong. Please try again.");
+      return;
+    }
 
     setSubmittedName(data.fullName.split(" ")[0]);
     increment();
@@ -228,6 +244,12 @@ export function SignupForm() {
                 "Subscribe for Updates & Trial Alerts"
               )}
             </Button>
+
+            {submitError && (
+              <p className="text-center text-sm text-accent" role="alert">
+                {submitError}
+              </p>
+            )}
 
             <p className="text-center text-xs text-muted-foreground">
               Your information is private and used only for these updates.
