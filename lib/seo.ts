@@ -15,14 +15,12 @@ export const SOCIAL_IMAGE_HEIGHT = 1440;
 export const SOCIAL_IMAGE_ALT =
   "Sheng Thao, former Mayor of Oakland — recalled and federally indicted on 8 corruption counts";
 
-export const SEO_TITLE =
-  "THE SHENG THAO FILES: Recalled, Indicted & Exposed";
+export const SEO_TITLE = SITE_NAME;
 
 export const SEO_DESCRIPTION =
   "Oakland's first recalled mayor faces 8 federal fraud counts. FBI raids, $95K in bribes, Duong family pay-to-play, 60.6% voted her out. The complete Sheng Thao dossier — trial pending.";
 
-export const OG_TITLE =
-  "She Sold Out Oakland. The Proof Is Here. | The Sheng Thao Files";
+export const OG_TITLE = SITE_NAME;
 
 export const OG_DESCRIPTION =
   "8-count federal indictment. FBI raids on her home. $95K laundered through a no-show job. 86,535 voters said remove her. Read the full Sheng Thao corruption record before the trial.";

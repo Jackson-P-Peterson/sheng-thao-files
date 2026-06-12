@@ -85,6 +85,8 @@ export const metadata: Metadata = {
   other: {
     "contact:email": CONTACT_EMAIL,
     "llms:txt": `${SITE_URL}/llms.txt`,
+    "og:title": SITE_NAME,
+    "twitter:title": SITE_NAME,
     "og:image": SOCIAL_IMAGE_URL,
     "og:image:secure_url": SOCIAL_IMAGE_URL,
     "og:image:type": "image/webp",

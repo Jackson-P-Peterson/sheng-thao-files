@@ -9,7 +9,7 @@ import { ReckoningSection } from "@/components/reckoning";
 import { TrialTracker } from "@/components/trial-tracker";
 import { SignupForm } from "@/components/signup-form";
 import { Footer } from "@/components/footer";
-import { SEO_DESCRIPTION, SEO_TITLE, SITE_URL, OG_TITLE, OG_DESCRIPTION } from "@/lib/seo";
+import { SEO_DESCRIPTION, SEO_TITLE, SITE_NAME, SITE_URL, OG_DESCRIPTION } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: SEO_TITLE,
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: OG_TITLE,
+    title: SITE_NAME,
     description: OG_DESCRIPTION,
   },
   twitter: {
-    title: OG_TITLE,
+    title: SITE_NAME,
     description: OG_DESCRIPTION,
   },
 };
