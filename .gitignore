@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# duplicate source assets (served from public/)
+/Sheng_Thao.webp
+/Sheng Thao Files.pdf
+
 # debug
 npm-debug.log*
 yarn-debug.log*
