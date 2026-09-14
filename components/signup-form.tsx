@@ -143,9 +143,9 @@ export function SignupForm() {
           </div>
         )}
 
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto w-full min-w-0 max-w-2xl">
           <div className="mb-10 text-center">
-            <h2 className="text-[1.75rem] font-black tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl">
+            <h2 className="w-full text-center text-[1.75rem] font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               Sheng Thao sold out Oakland.
               <br />
               <span className="text-accent">

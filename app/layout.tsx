@@ -112,7 +112,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} dark scroll-smooth`}>
-      <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
+      <body className="min-h-dvh w-full min-w-0 bg-background font-sans text-foreground antialiased">
         <JsonLd />
         {children}
       </body>

@@ -19,7 +19,7 @@ export function TrialTracker() {
       id="trial-tracker"
       className="border-y border-border/40 bg-muted/10 px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto w-full min-w-0 max-w-7xl">
         <SectionHeading
           eyebrow="Trial Tracker"
           title="Federal Prosecution Status"
@@ -47,7 +47,7 @@ export function TrialTracker() {
           {DEFENDANTS.map((d) => (
             <article
               key={d.name}
-              className="rounded-xl border border-border/50 bg-card p-4"
+              className="rounded-xl border border-border/50 bg-card p-4 text-center"
             >
               <h3 className="text-base font-semibold text-foreground">
                 {d.name}
@@ -95,7 +95,7 @@ export function TrialTracker() {
           </Table>
         </div>
 
-        <div className="mt-10 space-y-4 text-base leading-relaxed text-muted-foreground">
+        <div className="mt-10 space-y-4 text-center text-base leading-relaxed text-muted-foreground lg:text-left">
           <h3 className="text-lg font-bold text-foreground">
             Core Allegations
           </h3>
@@ -114,7 +114,7 @@ export function TrialTracker() {
           </p>
         </div>
 
-        <div className="mt-8 flex items-start gap-3 rounded-lg border border-border/50 bg-card/60 p-5">
+        <div className="mt-8 flex flex-col items-center gap-3 rounded-lg border border-border/50 bg-card/60 p-5 text-center sm:flex-row sm:items-start sm:text-left">
           <AlertCircle className="mt-0.5 size-5 shrink-0 text-accent" />
           <p className="text-sm text-muted-foreground sm:text-base">
             This page will be updated with trial developments, new court

@@ -11,7 +11,7 @@ export function StatsGrid() {
       id="stats"
       className="border-y border-border/40 bg-muted/20 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto w-full min-w-0 max-w-7xl">
         <SectionHeading
           eyebrow="The Scandal at a Glance"
           title="The Numbers Don't Lie"
@@ -24,7 +24,7 @@ export function StatsGrid() {
           {STATS.map((stat, i) => (
             <AnimatedCard key={stat.label} delay={i * 0.08}>
               <Card className="h-full border-border/50 bg-card/80 backdrop-blur-sm transition-colors hover:border-accent/30">
-                <CardContent className="flex flex-col gap-3 pt-6">
+                <CardContent className="flex flex-col gap-3 pt-6 text-center sm:text-left">
                   <span className="text-4xl font-black text-accent sm:text-5xl">
                     {stat.value}
                   </span>

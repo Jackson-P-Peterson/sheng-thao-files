@@ -31,7 +31,7 @@ const TIMELINE = [
 export function ReckoningSection() {
   return (
     <AnimatedSection id="reckoning" className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto w-full min-w-0 max-w-7xl">
         <SectionHeading
           eyebrow="The Reckoning"
           title="Raids, Recall & Indictment"
@@ -50,7 +50,7 @@ export function ReckoningSection() {
               <div className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-accent bg-background sm:size-12">
                 <event.icon className="size-5 text-accent" />
               </div>
-              <div className="min-w-0 flex-1 rounded-xl border border-border/50 bg-card/60 p-4 sm:p-8">
+              <div className="min-w-0 flex-1 rounded-xl border border-border/50 bg-card/60 p-4 text-center sm:p-8 sm:text-left">
                 <time className="text-sm font-semibold uppercase tracking-wider text-accent">
                   {event.date}
                 </time>
@@ -65,7 +65,7 @@ export function ReckoningSection() {
           ))}
         </div>
 
-        <div className="mt-10 flex items-start gap-3 rounded-xl border border-accent/30 bg-accent/5 p-4 sm:mt-12 sm:gap-4 sm:p-8">
+        <div className="mt-10 flex flex-col items-center gap-3 rounded-xl border border-accent/30 bg-accent/5 p-4 text-center sm:mt-12 sm:flex-row sm:items-start sm:gap-4 sm:p-8 sm:text-left">
           <Scale className="size-8 shrink-0 text-accent" />
           <p className="text-base leading-relaxed text-foreground sm:text-lg">
             Mario Juarez put his name on the line. Renia Webb spoke up despite

@@ -10,7 +10,7 @@ export function AndreJonesSection() {
       id="bagman"
       className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto w-full min-w-0 max-w-7xl">
         <SectionHeading
           eyebrow="The Bagman & The Shadow Executive"
           title="Andre Jones"
@@ -18,7 +18,7 @@ export function AndreJonesSection() {
         />
 
         <div className="grid gap-8 lg:grid-cols-5 lg:gap-12">
-          <div className="space-y-6 lg:col-span-3">
+          <div className="space-y-6 text-center lg:col-span-3 lg:text-left">
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
               Andre Jones wasn&apos;t a campaign volunteer or a casual
               associate. He was Sheng Thao&apos;s{" "}
@@ -37,8 +37,8 @@ export function AndreJonesSection() {
               the public-facing role.
             </p>
 
-            <blockquote className="rounded-xl border border-accent/30 bg-accent/5 p-5 sm:p-8">
-              <MessageSquareWarning className="mb-4 size-8 text-accent" />
+            <blockquote className="rounded-xl border border-accent/30 bg-accent/5 p-5 text-center sm:p-8 lg:text-left">
+              <MessageSquareWarning className="mx-auto mb-4 size-8 text-accent lg:mx-0" />
               <p className="text-base leading-relaxed text-foreground sm:text-lg">
                 When whistleblower{" "}
                 <strong>Renia Webb</strong> confronted the operation, Jones
@@ -73,9 +73,9 @@ export function AndreJonesSection() {
             ].map(({ icon: Icon, title, text }) => (
               <div
                 key={title}
-                className="rounded-xl border border-border/50 bg-card/60 p-4 sm:p-5"
+                className="rounded-xl border border-border/50 bg-card/60 p-4 text-center sm:p-5 lg:text-left"
               >
-                <div className="mb-2 flex items-center gap-3">
+                <div className="mb-2 flex items-center justify-center gap-3 lg:justify-start">
                   <Icon className="size-5 text-accent" />
                   <h3 className="font-bold text-foreground">{title}</h3>
                 </div>

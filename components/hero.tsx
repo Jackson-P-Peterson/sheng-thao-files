@@ -24,7 +24,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-dvh flex-col items-center justify-center overflow-x-clip px-4 pt-8 pb-20 sm:px-6 sm:pt-10 sm:pb-16 lg:px-8"
+      className="relative flex min-h-dvh w-full min-w-0 flex-col items-center justify-center overflow-x-clip px-4 pt-8 pb-20 sm:px-6 sm:pt-10 sm:pb-16 lg:px-8"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.12)_0%,_transparent_60%)]"
@@ -35,12 +35,12 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-5xl text-center">
+      <div className="relative mx-auto w-full min-w-0 max-w-5xl text-center">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-4 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-accent sm:mb-6 sm:text-sm sm:tracking-[0.25em]"
+          className="mb-4 w-full text-center text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-accent sm:mb-6 sm:text-sm sm:tracking-[0.25em]"
         >
           The Definitive Exposé
         </motion.p>
@@ -49,16 +49,16 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="mx-auto mb-6 w-full max-w-4xl sm:mb-10"
+          className="mx-auto mb-6 w-full min-w-0 max-w-4xl sm:mb-10"
         >
-          <div className="relative overflow-hidden rounded-lg border border-accent/40 shadow-[0_0_60px_rgba(220,38,38,0.2)]">
+          <div className="relative w-full overflow-hidden rounded-lg border border-accent/40 shadow-[0_0_60px_rgba(220,38,38,0.2)]">
             <Image
               src={ASSETS.heroImage}
               alt="Sheng Thao"
               width={1200}
               height={800}
               priority
-              className="h-auto w-full object-cover object-center grayscale-[15%]"
+              className="h-auto w-full max-w-full object-cover object-center grayscale-[15%]"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 896px"
             />
           </div>
@@ -68,18 +68,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-[clamp(2.25rem,11vw,3rem)] font-black leading-[0.95] tracking-tight text-balance text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
+          className="w-full text-center text-[clamp(2.15rem,9.5vw,3rem)] font-black leading-[0.95] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          THE SHENG
-          <br />
-          <span className="text-accent">THAO FILES</span>
+          <span className="block">THE SHENG</span>
+          <span className="block text-accent">THAO FILES</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-pretty text-muted-foreground sm:mt-8 sm:text-xl md:text-2xl"
+          className="mx-auto mt-5 w-full max-w-3xl text-center text-base leading-relaxed text-muted-foreground sm:mt-8 sm:text-xl md:text-2xl"
         >
           The complete record of how Oakland&apos;s first recalled mayor{" "}
           <strong className="font-semibold text-foreground">
@@ -92,7 +91,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-pretty text-muted-foreground/80 sm:mt-4 sm:text-lg"
+          className="mx-auto mt-3 w-full max-w-2xl text-center text-sm leading-relaxed text-muted-foreground/80 sm:mt-4 sm:text-lg"
         >
           From straw-donor schemes in 2018 to an 8-count federal indictment in
           2025. The definitive exposé.
@@ -136,7 +135,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-10 grid w-full max-w-lg grid-cols-2 gap-x-3 gap-y-2 text-center text-[0.65rem] font-medium uppercase tracking-[0.12em] text-muted-foreground/70 sm:mt-16 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-6 sm:gap-y-2 sm:text-sm sm:tracking-widest"
+          className="mx-auto mt-10 grid w-full max-w-lg grid-cols-2 gap-x-3 gap-y-2 text-center text-[0.65rem] font-medium uppercase tracking-[0.12em] text-muted-foreground/70 sm:mt-16 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-6 sm:gap-y-2 sm:text-sm sm:tracking-widest"
         >
           {TRUST_BAR.map((item, i) => (
             <span key={item} className="flex items-center justify-center gap-6">

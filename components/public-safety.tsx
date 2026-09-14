@@ -37,14 +37,14 @@ export function PublicSafetySection() {
       id="public-safety"
       className="border-y border-border/40 bg-muted/10 px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto w-full min-w-0 max-w-7xl">
         <SectionHeading
           eyebrow="The Public Safety Catastrophe"
           title="Systematic Dismantling of Public Safety"
           description="While the Duong syndicate collected its payoffs, Oakland descended into chaos. Sheng Thao didn't just fail to lead — she actively sabotaged the institutions meant to protect residents."
         />
 
-        <div className="mb-12 space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <div className="mb-12 space-y-6 text-center text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-left">
           <p>
             In February 2023, Thao{" "}
             <strong className="text-foreground">
@@ -76,7 +76,7 @@ export function PublicSafetySection() {
         <div className="mb-12 grid gap-4 sm:grid-cols-3">
           {CRIME_STATS.map((item, i) => (
             <AnimatedCard key={item.label} delay={i * 0.08}>
-              <div className="rounded-xl border border-border/50 bg-card p-5 sm:p-6">
+              <div className="rounded-xl border border-border/50 bg-card p-5 text-center sm:p-6 sm:text-left">
                 <item.icon className="mb-3 size-6 text-accent" />
                 <div className="text-3xl font-black text-accent">{item.stat}</div>
                 <h3 className="mt-1 font-bold text-foreground">{item.label}</h3>
@@ -89,7 +89,7 @@ export function PublicSafetySection() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="flex gap-3 rounded-xl border border-border/50 bg-card/60 p-4 sm:gap-4 sm:p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border/50 bg-card/60 p-4 text-center sm:flex-row sm:items-start sm:gap-4 sm:p-6 sm:text-left">
             <ShieldX className="size-8 shrink-0 text-accent" />
             <div className="min-w-0">
               <h3 className="mb-2 text-lg font-bold text-foreground">
@@ -103,7 +103,7 @@ export function PublicSafetySection() {
               </p>
             </div>
           </div>
-          <div className="flex gap-3 rounded-xl border border-border/50 bg-card/60 p-4 sm:gap-4 sm:p-6">
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-border/50 bg-card/60 p-4 text-center sm:flex-row sm:items-start sm:gap-4 sm:p-6 sm:text-left">
             <Building className="size-8 shrink-0 text-accent" />
             <div className="min-w-0">
               <h3 className="mb-2 text-lg font-bold text-foreground">

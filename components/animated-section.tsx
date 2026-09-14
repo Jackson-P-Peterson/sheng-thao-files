@@ -45,7 +45,7 @@ export function AnimatedSection({
           },
         },
       }}
-      className={cn(className)}
+      className={cn("w-full min-w-0", className)}
     >
       {children}
     </motion.section>

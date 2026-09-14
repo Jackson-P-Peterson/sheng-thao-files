@@ -88,10 +88,20 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply font-sans overflow-x-clip;
+    @apply max-w-full overflow-x-clip font-sans;
   }
   body {
-    @apply overflow-x-clip bg-background text-foreground;
+    @apply max-w-full overflow-x-clip bg-background text-foreground;
+  }
+  main,
+  section,
+  footer {
+    @apply w-full min-w-0;
+  }
+  img,
+  video,
+  svg {
+    @apply max-w-full;
   }
 }
 

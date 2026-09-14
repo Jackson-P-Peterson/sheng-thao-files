@@ -29,7 +29,7 @@ export function CorruptionSection() {
       id="corruption"
       className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto w-full min-w-0 max-w-7xl">
         <SectionHeading
           eyebrow="The Architecture of Corruption"
           title="The Duong Family Syndicate"
@@ -37,7 +37,7 @@ export function CorruptionSection() {
         />
 
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
-          <div className="space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <div className="space-y-6 text-center text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-left">
             <p>
               California Waste Solutions didn&apos;t just donate to a candidate —
               they constructed an entire{" "}
@@ -53,7 +53,7 @@ export function CorruptionSection() {
               off exponentially. The same network that bought a City Council seat
               now controlled Oakland City Hall — and they intended to collect.
             </p>
-            <p className="border-l-4 border-accent pl-4 font-medium text-foreground">
+            <p className="mx-auto max-w-xl border-l-4 border-accent pl-4 text-left font-medium text-foreground">
               This wasn&apos;t sloppy corruption. It was a systematic operation
               engineered by illicit capital — and Sheng Thao was its most
               valuable asset.

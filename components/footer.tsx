@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 export function Footer() {
   return (
     <footer className="border-t border-border/40 bg-muted/20 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto w-full min-w-0 max-w-7xl">
         <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
           The facts are documented in federal court records, state regulatory
           actions, and official city audits.{" "}

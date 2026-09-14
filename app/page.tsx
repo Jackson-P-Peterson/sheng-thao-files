@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <main>
+      <main className="w-full min-w-0">
         <Hero />
         <StatsGrid />
         <CorruptionSection />
