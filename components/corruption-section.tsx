@@ -27,7 +27,7 @@ export function CorruptionSection() {
   return (
     <AnimatedSection
       id="corruption"
-      className="px-4 py-24 sm:px-6 lg:px-8"
+      className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeading
@@ -64,7 +64,7 @@ export function CorruptionSection() {
             {BULLETS.map(({ icon: Icon, text }) => (
               <li
                 key={text.slice(0, 40)}
-                className="flex gap-4 rounded-xl border border-border/50 bg-card/50 p-5"
+                className="flex gap-3 rounded-xl border border-border/50 bg-card/50 p-4 sm:gap-4 sm:p-5"
               >
                 <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
                   <Icon className="size-5 text-accent" />

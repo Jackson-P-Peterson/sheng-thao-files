@@ -8,7 +8,7 @@ export function AndreJonesSection() {
   return (
     <AnimatedSection
       id="bagman"
-      className="px-4 py-24 sm:px-6 lg:px-8"
+      className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeading
@@ -37,7 +37,7 @@ export function AndreJonesSection() {
               the public-facing role.
             </p>
 
-            <blockquote className="rounded-xl border border-accent/30 bg-accent/5 p-6 sm:p-8">
+            <blockquote className="rounded-xl border border-accent/30 bg-accent/5 p-5 sm:p-8">
               <MessageSquareWarning className="mb-4 size-8 text-accent" />
               <p className="text-base leading-relaxed text-foreground sm:text-lg">
                 When whistleblower{" "}
@@ -73,7 +73,7 @@ export function AndreJonesSection() {
             ].map(({ icon: Icon, title, text }) => (
               <div
                 key={title}
-                className="rounded-xl border border-border/50 bg-card/60 p-5"
+                className="rounded-xl border border-border/50 bg-card/60 p-4 sm:p-5"
               >
                 <div className="mb-2 flex items-center gap-3">
                   <Icon className="size-5 text-accent" />

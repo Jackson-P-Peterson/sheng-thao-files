@@ -9,7 +9,7 @@ export function StatsGrid() {
   return (
     <AnimatedSection
       id="stats"
-      className="border-y border-border/40 bg-muted/20 px-4 py-20 sm:px-6 lg:px-8"
+      className="border-y border-border/40 bg-muted/20 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeading

@@ -35,7 +35,7 @@ export function PublicSafetySection() {
   return (
     <AnimatedSection
       id="public-safety"
-      className="border-y border-border/40 bg-muted/10 px-4 py-24 sm:px-6 lg:px-8"
+      className="border-y border-border/40 bg-muted/10 px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeading
@@ -76,7 +76,7 @@ export function PublicSafetySection() {
         <div className="mb-12 grid gap-4 sm:grid-cols-3">
           {CRIME_STATS.map((item, i) => (
             <AnimatedCard key={item.label} delay={i * 0.08}>
-              <div className="rounded-xl border border-border/50 bg-card p-6">
+              <div className="rounded-xl border border-border/50 bg-card p-5 sm:p-6">
                 <item.icon className="mb-3 size-6 text-accent" />
                 <div className="text-3xl font-black text-accent">{item.stat}</div>
                 <h3 className="mt-1 font-bold text-foreground">{item.label}</h3>
@@ -89,9 +89,9 @@ export function PublicSafetySection() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="flex gap-4 rounded-xl border border-border/50 bg-card/60 p-6">
+          <div className="flex gap-3 rounded-xl border border-border/50 bg-card/60 p-4 sm:gap-4 sm:p-6">
             <ShieldX className="size-8 shrink-0 text-accent" />
-            <div>
+            <div className="min-w-0">
               <h3 className="mb-2 text-lg font-bold text-foreground">
                 A City in Collapse
               </h3>
@@ -103,9 +103,9 @@ export function PublicSafetySection() {
               </p>
             </div>
           </div>
-          <div className="flex gap-4 rounded-xl border border-border/50 bg-card/60 p-6">
+          <div className="flex gap-3 rounded-xl border border-border/50 bg-card/60 p-4 sm:gap-4 sm:p-6">
             <Building className="size-8 shrink-0 text-accent" />
-            <div>
+            <div className="min-w-0">
               <h3 className="mb-2 text-lg font-bold text-foreground">
                 Leadership Vacuum
               </h3>

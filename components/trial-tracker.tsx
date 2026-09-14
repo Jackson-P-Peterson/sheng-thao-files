@@ -17,7 +17,7 @@ export function TrialTracker() {
   return (
     <AnimatedSection
       id="trial-tracker"
-      className="border-y border-border/40 bg-muted/10 px-4 py-24 sm:px-6 lg:px-8"
+      className="border-y border-border/40 bg-muted/10 px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeading
@@ -27,14 +27,41 @@ export function TrialTracker() {
           className="mx-auto"
         />
 
-        <div className="mb-10 rounded-xl border-2 border-accent bg-accent/10 px-6 py-5 text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.15em] text-accent sm:text-base">
-            Indicted January 17, 2025 | 8-Count Federal Indictment | Trial
-            Pending
+        <div className="mb-8 rounded-xl border-2 border-accent bg-accent/10 px-4 py-4 text-center sm:mb-10 sm:px-6 sm:py-5">
+          <p className="text-xs font-bold uppercase tracking-wide text-pretty text-accent sm:text-base sm:tracking-[0.15em]">
+            Indicted January 17, 2025
+            <span className="mx-1.5 hidden sm:inline" aria-hidden>
+              |
+            </span>
+            <span className="mt-1 block sm:mt-0 sm:inline">
+              8-Count Federal Indictment
+            </span>
+            <span className="mx-1.5 hidden sm:inline" aria-hidden>
+              |
+            </span>
+            <span className="mt-1 block sm:mt-0 sm:inline">Trial Pending</span>
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-xl border border-border/50 bg-card">
+        <div className="space-y-3 md:hidden">
+          {DEFENDANTS.map((d) => (
+            <article
+              key={d.name}
+              className="rounded-xl border border-border/50 bg-card p-4"
+            >
+              <h3 className="text-base font-semibold text-foreground">
+                {d.name}
+              </h3>
+              <p className="mt-1 text-sm text-muted-foreground">{d.role}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <span className="font-semibold text-foreground">Charges: </span>
+                {d.charges}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="hidden overflow-hidden rounded-xl border border-border/50 bg-card md:block">
           <Table>
             <TableHeader>
               <TableRow className="border-border/50 hover:bg-transparent">
@@ -56,10 +83,10 @@ export function TrialTracker() {
                   <TableCell className="font-semibold text-foreground">
                     {d.name}
                   </TableCell>
-                  <TableCell className="text-muted-foreground">
+                  <TableCell className="whitespace-normal text-muted-foreground">
                     {d.role}
                   </TableCell>
-                  <TableCell className="text-muted-foreground">
+                  <TableCell className="whitespace-normal text-muted-foreground">
                     {d.charges}
                   </TableCell>
                 </TableRow>

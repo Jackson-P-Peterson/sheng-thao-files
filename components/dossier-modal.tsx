@@ -23,7 +23,7 @@ export function DossierModal({ open, onOpenChange }: DossierModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] overflow-y-auto border-border/60 bg-card sm:max-w-2xl">
+      <DialogContent className="max-h-[85dvh] overflow-y-auto border-border/60 bg-card p-4 sm:max-w-2xl sm:p-6">
         <DialogHeader>
           <DialogTitle className="text-xl font-black uppercase tracking-wide text-foreground">
             {DOSSIER_CONTENT.title}

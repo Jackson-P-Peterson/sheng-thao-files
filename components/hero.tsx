@@ -24,7 +24,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-10 pb-16 sm:px-6 lg:px-8"
+      className="relative flex min-h-dvh flex-col items-center justify-center overflow-x-clip px-4 pt-8 pb-20 sm:px-6 sm:pt-10 sm:pb-16 lg:px-8"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(220,38,38,0.12)_0%,_transparent_60%)]"
@@ -40,7 +40,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-6 text-sm font-semibold uppercase tracking-[0.25em] text-accent"
+          className="mb-4 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-accent sm:mb-6 sm:text-sm sm:tracking-[0.25em]"
         >
           The Definitive Exposé
         </motion.p>
@@ -49,7 +49,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="mx-auto mb-10 w-full max-w-4xl"
+          className="mx-auto mb-6 w-full max-w-4xl sm:mb-10"
         >
           <div className="relative overflow-hidden rounded-lg border border-accent/40 shadow-[0_0_60px_rgba(220,38,38,0.2)]">
             <Image
@@ -68,7 +68,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl font-black leading-[0.95] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
+          className="text-[clamp(2.25rem,11vw,3rem)] font-black leading-[0.95] tracking-tight text-balance text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
         >
           THE SHENG
           <br />
@@ -79,7 +79,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl md:text-2xl"
+          className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-pretty text-muted-foreground sm:mt-8 sm:text-xl md:text-2xl"
         >
           The complete record of how Oakland&apos;s first recalled mayor{" "}
           <strong className="font-semibold text-foreground">
@@ -92,7 +92,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground/80 sm:text-lg"
+          className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-pretty text-muted-foreground/80 sm:mt-4 sm:text-lg"
         >
           From straw-donor schemes in 2018 to an 8-count federal indictment in
           2025. The definitive exposé.
@@ -102,18 +102,18 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap"
+          className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
         >
           <Button
             onClick={() => scrollTo("#join")}
-            className="h-12 w-full bg-accent px-8 text-base font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90 sm:w-auto"
+            className="h-auto min-h-12 w-full min-w-0 shrink whitespace-normal bg-accent px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-pretty text-accent-foreground hover:bg-accent/90 sm:h-12 sm:w-auto sm:px-8 sm:py-0 sm:text-base"
           >
             Join the Fight for Accountability
           </Button>
           <Button
             variant="outline"
             onClick={downloadDossier}
-            className="h-12 w-full border-border/80 px-8 text-base font-semibold hover:bg-muted/50 sm:w-auto"
+            className="h-auto min-h-12 w-full min-w-0 shrink whitespace-normal border-border/80 px-4 py-3 text-center text-sm font-semibold sm:h-12 sm:w-auto sm:px-8 sm:py-0 sm:text-base hover:bg-muted/50"
           >
             <FileText className="mr-2 size-4" />
             Download the Full Dossier
@@ -124,7 +124,7 @@ export function Hero() {
             rel="noopener noreferrer"
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "h-12 w-full border-accent/50 px-8 text-base font-semibold text-accent hover:bg-accent/10 sm:w-auto"
+              "h-auto min-h-12 w-full min-w-0 shrink whitespace-normal border-accent/50 px-4 py-3 text-center text-sm font-semibold text-accent hover:bg-accent/10 sm:h-12 sm:w-auto sm:px-8 sm:py-0 sm:text-base"
             )}
           >
             <Heart className="mr-2 size-4" />
@@ -136,10 +136,10 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium uppercase tracking-widest text-muted-foreground/70 sm:text-sm"
+          className="mt-10 grid w-full max-w-lg grid-cols-2 gap-x-3 gap-y-2 text-center text-[0.65rem] font-medium uppercase tracking-[0.12em] text-muted-foreground/70 sm:mt-16 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-6 sm:gap-y-2 sm:text-sm sm:tracking-widest"
         >
           {TRUST_BAR.map((item, i) => (
-            <span key={item} className="flex items-center gap-6">
+            <span key={item} className="flex items-center justify-center gap-6">
               {i > 0 && (
                 <span className="hidden text-border sm:inline" aria-hidden>
                   •
@@ -156,7 +156,7 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
         onClick={() => scrollTo("#stats")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground transition-colors hover:text-foreground"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-muted-foreground transition-colors hover:text-foreground sm:bottom-8"
         aria-label="Scroll to content"
       >
         <ArrowDown className="size-6 animate-bounce" />

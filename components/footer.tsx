@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-muted/20 px-4 py-16 sm:px-6 lg:px-8">
+    <footer className="border-t border-border/40 bg-muted/20 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
           The facts are documented in federal court records, state regulatory
@@ -14,7 +14,7 @@ export function Footer() {
         </p>
 
         <nav
-          className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
+          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-3"
           aria-label="Primary sources"
         >
           {FOOTER_SOURCES.map((source) => (
@@ -23,7 +23,7 @@ export function Footer() {
               href={source.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-accent"
+              className="inline-flex max-w-full items-center gap-1.5 text-center text-sm text-pretty text-muted-foreground transition-colors hover:text-accent"
             >
               {source.label}
               <ExternalLink className="size-3.5" />

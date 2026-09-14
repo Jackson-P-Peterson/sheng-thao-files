@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -31,6 +31,13 @@ const socialImage = {
   height: SOCIAL_IMAGE_HEIGHT,
   alt: SOCIAL_IMAGE_ALT,
   type: "image/webp",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f0f0f",
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -105,7 +112,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} dark scroll-smooth`}>
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+      <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
         <JsonLd />
         {children}
       </body>

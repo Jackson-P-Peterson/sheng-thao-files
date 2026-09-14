@@ -30,7 +30,7 @@ const TIMELINE = [
 
 export function ReckoningSection() {
   return (
-    <AnimatedSection id="reckoning" className="px-4 py-24 sm:px-6 lg:px-8">
+    <AnimatedSection id="reckoning" className="px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="The Reckoning"
@@ -40,17 +40,17 @@ export function ReckoningSection() {
 
         <div className="relative space-y-0">
           {TIMELINE.map((event, i) => (
-            <div key={event.date} className="relative flex gap-6 pb-12 last:pb-0">
+            <div key={event.date} className="relative flex gap-4 pb-10 last:pb-0 sm:gap-6 sm:pb-12">
               {i < TIMELINE.length - 1 && (
                 <div
-                  className="absolute top-14 left-6 h-[calc(100%-3.5rem)] w-px bg-border"
+                  className="absolute top-12 left-5 h-[calc(100%-3rem)] w-px bg-border sm:top-14 sm:left-6 sm:h-[calc(100%-3.5rem)]"
                   aria-hidden
                 />
               )}
-              <div className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-accent bg-background">
+              <div className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-accent bg-background sm:size-12">
                 <event.icon className="size-5 text-accent" />
               </div>
-              <div className="flex-1 rounded-xl border border-border/50 bg-card/60 p-6 sm:p-8">
+              <div className="min-w-0 flex-1 rounded-xl border border-border/50 bg-card/60 p-4 sm:p-8">
                 <time className="text-sm font-semibold uppercase tracking-wider text-accent">
                   {event.date}
                 </time>
@@ -65,7 +65,7 @@ export function ReckoningSection() {
           ))}
         </div>
 
-        <div className="mt-12 flex items-start gap-4 rounded-xl border border-accent/30 bg-accent/5 p-6 sm:p-8">
+        <div className="mt-10 flex items-start gap-3 rounded-xl border border-accent/30 bg-accent/5 p-4 sm:mt-12 sm:gap-4 sm:p-8">
           <Scale className="size-8 shrink-0 text-accent" />
           <p className="text-base leading-relaxed text-foreground sm:text-lg">
             Mario Juarez put his name on the line. Renia Webb spoke up despite

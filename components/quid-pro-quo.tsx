@@ -9,7 +9,7 @@ const ICONS = [Building2, Home, UserCheck];
 
 export function QuidProQuoSection() {
   return (
-    <section className="border-y border-border/40 bg-muted/10 px-4 py-24 sm:px-6 lg:px-8">
+    <section className="border-y border-border/40 bg-muted/10 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <AnimatedSection>
           <SectionHeading
@@ -24,7 +24,7 @@ export function QuidProQuoSection() {
             const Icon = ICONS[i];
             return (
               <AnimatedCard key={item.title} delay={i * 0.1}>
-                <article className="flex h-full flex-col rounded-xl border border-border/50 bg-card p-6 sm:p-8">
+                <article className="flex h-full flex-col rounded-xl border border-border/50 bg-card p-5 sm:p-8">
                   <div className="mb-5 flex items-center gap-4">
                     <span className="flex size-12 items-center justify-center rounded-full bg-accent text-lg font-black text-accent-foreground">
                       {i + 1}

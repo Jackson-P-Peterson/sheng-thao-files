@@ -112,7 +112,7 @@ export function SignupForm() {
     <>
       <AnimatedSection
         id="join"
-        className="relative px-4 py-24 sm:px-6 lg:px-8"
+        className="relative px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
       >
         {showConfetti && (
           <div
@@ -145,7 +145,7 @@ export function SignupForm() {
 
         <div className="mx-auto max-w-2xl">
           <div className="mb-10 text-center">
-            <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h2 className="text-[1.75rem] font-black tracking-tight text-balance text-foreground sm:text-4xl lg:text-5xl">
               Sheng Thao sold out Oakland.
               <br />
               <span className="text-accent">
@@ -168,7 +168,7 @@ export function SignupForm() {
 
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5 rounded-2xl border border-border/50 bg-card p-6 sm:p-8"
+            className="space-y-5 rounded-2xl border border-border/50 bg-card p-4 sm:p-8"
             noValidate
           >
             <div className="space-y-2">
@@ -211,7 +211,7 @@ export function SignupForm() {
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-foreground">
                 Phone{" "}
-                <span className="text-muted-foreground">
+                <span className="block text-muted-foreground sm:inline">
                   (optional — SMS trial updates)
                 </span>
               </Label>
@@ -233,7 +233,7 @@ export function SignupForm() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="h-12 w-full bg-accent text-base font-bold uppercase tracking-wide text-accent-foreground hover:bg-accent/90"
+              className="h-auto min-h-12 w-full min-w-0 whitespace-normal bg-accent px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-pretty text-accent-foreground hover:bg-accent/90 sm:text-base"
             >
               {isSubmitting ? (
                 <>
@@ -259,7 +259,7 @@ export function SignupForm() {
       </AnimatedSection>
 
       <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
-        <DialogContent className="border-border/60 bg-card sm:max-w-md">
+        <DialogContent className="max-h-[min(90dvh,40rem)] overflow-y-auto border-border/60 bg-card p-5 sm:max-w-md sm:p-6">
           <DialogHeader className="items-center text-center">
             <motion.div
               initial={{ scale: 0 }}

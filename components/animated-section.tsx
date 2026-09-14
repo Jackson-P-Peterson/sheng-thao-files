@@ -30,7 +30,7 @@ export function AnimatedSection({
       id={id}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-48px", amount: 0.15 }}
       variants={{
         hidden: defaultVariants.hidden,
         visible: {
@@ -73,8 +73,10 @@ export function AnimatedCard({
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={{ scale: 1.02 }}
-      className={cn(className)}
+      className={cn(
+        "motion-safe:[@media(hover:hover)]:transition-transform motion-safe:[@media(hover:hover)]:hover:scale-[1.02]",
+        className
+      )}
     >
       {children}
     </motion.div>
