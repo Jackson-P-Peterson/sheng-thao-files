@@ -7,6 +7,7 @@ import { AndreJonesSection } from "@/components/andre-jones";
 import { PublicSafetySection } from "@/components/public-safety";
 import { ReckoningSection } from "@/components/reckoning";
 import { TrialTracker } from "@/components/trial-tracker";
+import { XTrialFeedLoader } from "@/components/x-trial-feed-loader";
 import { SignupForm } from "@/components/signup-form";
 import { Footer } from "@/components/footer";
 import { SEO_DESCRIPTION, SEO_TITLE, SITE_NAME, SITE_URL, OG_DESCRIPTION } from "@/lib/seo";
@@ -38,7 +39,7 @@ export default function HomePage() {
         <AndreJonesSection />
         <PublicSafetySection />
         <ReckoningSection />
-        <TrialTracker />
+        <TrialTracker liveFeed={<XTrialFeedLoader />} />
         <SignupForm />
       </main>
       <Footer />

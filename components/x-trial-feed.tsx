@@ -1,74 +1,114 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import Script from "next/script";
-import { ExternalLink } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
+import { ExternalLink, Heart, MessageCircle, Repeat2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { X_PROFILE } from "@/lib/content";
+import type { FeedPost } from "@/lib/x-feed";
 import { cn } from "@/lib/utils";
 
-declare global {
-  interface Window {
-    twttr?: {
-      ready: (callback: () => void) => void;
-      widgets: {
-        createTimeline: (
-          source: { sourceType: "profile"; screenName: string },
-          element: HTMLElement,
-          options?: Record<string, unknown>
-        ) => Promise<unknown>;
-      };
-    };
-  }
+function formatTime(timestamp: number, createdAt: string) {
+  if (!timestamp) return createdAt;
+  const date = new Date(timestamp > 1e12 ? timestamp : timestamp * 1000);
+  if (Number.isNaN(date.getTime())) return createdAt;
+
+  const diffMs = Date.now() - date.getTime();
+  const minutes = Math.max(0, Math.round(diffMs / 60000));
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes}m`;
+  const hours = Math.round(minutes / 60);
+  if (hours < 24) return `${hours}h`;
+  const days = Math.round(hours / 24);
+  if (days < 7) return `${days}d`;
+
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
 }
 
-export function XTrialFeed() {
+function formatCount(value: number) {
+  if (value < 1000) return String(value);
+  if (value < 10000) return `${(value / 1000).toFixed(1).replace(/\.0$/, "")}K`;
+  return `${Math.round(value / 1000)}K`;
+}
+
+function FeedMedia({ post }: { post: FeedPost }) {
+  if (post.media.length === 0) return null;
+
+  return (
+    <div
+      className={cn(
+        "mt-3 overflow-hidden rounded-xl border border-border/50",
+        post.media.length > 1 && "grid grid-cols-2 gap-px bg-border/50"
+      )}
+    >
+      {post.media.map((item) => {
+        const preview = item.thumbnailUrl ?? item.url;
+        const isVideo = item.type === "video" || item.type === "gif";
+
+        return (
+          <a
+            key={`${post.id}-${preview}`}
+            href={post.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative block bg-muted"
+          >
+            <Image
+              src={preview}
+              alt=""
+              width={1280}
+              height={720}
+              unoptimized
+              className="aspect-video h-auto w-full object-cover"
+            />
+            {isVideo && (
+              <span className="absolute inset-0 flex items-center justify-center bg-black/35 text-xs font-semibold uppercase tracking-wide text-white">
+                Play on X
+              </span>
+            )}
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
+export function XTrialFeed({ initialPosts }: { initialPosts: FeedPost[] }) {
+  const [posts, setPosts] = useState<FeedPost[]>(initialPosts);
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
-    "loading"
+    initialPosts.length > 0 ? "ready" : "error"
   );
 
-  const mountTimeline = useCallback(() => {
-    const insert = () => {
-      const el = document.getElementById("x-trial-timeline");
-      if (!el || !window.twttr?.widgets?.createTimeline) {
-        setStatus("error");
-        return;
+  const loadFeed = useCallback(async (silent = false) => {
+    if (!silent) setStatus("loading");
+
+    try {
+      const response = await fetch("/api/x-feed", { cache: "no-store" });
+      const payload = (await response.json()) as {
+        success?: boolean;
+        posts?: FeedPost[];
+      };
+
+      if (!response.ok || !payload.success || !payload.posts?.length) {
+        throw new Error("empty");
       }
 
-      if (el.querySelector("iframe")) {
-        setStatus("ready");
-        return;
-      }
-
-      el.replaceChildren();
-
-      window.twttr.widgets
-        .createTimeline(
-          { sourceType: "profile", screenName: X_PROFILE.handle },
-          el,
-          {
-            theme: "dark",
-            chrome: "noheader nofooter noborders transparent",
-            height: 640,
-            dnt: true,
-          }
-        )
-        .then(() => setStatus("ready"))
-        .catch(() => setStatus("error"));
-    };
-
-    if (window.twttr?.widgets?.createTimeline) {
-      insert();
-      return;
+      setPosts(payload.posts);
+      setStatus("ready");
+    } catch {
+      setStatus((current) => (current === "ready" ? "ready" : "error"));
     }
-
-    if (window.twttr?.ready) {
-      window.twttr.ready(insert);
-      return;
-    }
-
-    setStatus("error");
   }, []);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      void loadFeed(true);
+    }, 60_000);
+    return () => window.clearInterval(id);
+  }, [loadFeed]);
 
   return (
     <div className="overflow-hidden rounded-xl border border-border/50 bg-card">
@@ -102,47 +142,114 @@ export function XTrialFeed() {
         </a>
       </div>
 
-      <div className="relative min-h-[640px] bg-[#161616]">
-        {status !== "ready" && status !== "error" && (
-          <p className="absolute inset-0 flex items-center justify-center px-6 text-center text-sm text-muted-foreground">
-            Loading the live trial feed…
+      {status === "loading" && (
+        <p className="px-6 py-24 text-center text-sm text-muted-foreground">
+          Loading the live trial feed…
+        </p>
+      )}
+
+      {status === "error" && (
+        <div className="flex flex-col items-center justify-center gap-4 px-6 py-16 text-center">
+          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+            The live timeline couldn&apos;t load right now. Follow the feed on X
+            for real-time trial updates.
           </p>
-        )}
+          <a
+            href={X_PROFILE.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "h-10 border-accent/50 px-4 font-semibold text-accent hover:bg-accent/10"
+            )}
+          >
+            Open @{X_PROFILE.handle} on X
+            <ExternalLink className="ml-2 size-3.5" />
+          </a>
+          <button
+            type="button"
+            onClick={() => void loadFeed()}
+            className="text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+          >
+            Try loading the feed again
+          </button>
+        </div>
+      )}
 
-        {status === "error" && (
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 px-6 text-center">
-            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-              The live timeline couldn&apos;t load in this browser. Follow the
-              feed on X for real-time trial updates.
-            </p>
-            <a
-              href={X_PROFILE.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "h-10 border-accent/50 px-4 font-semibold text-accent hover:bg-accent/10"
-              )}
-            >
-              Open @{X_PROFILE.handle} on X
-              <ExternalLink className="ml-2 size-3.5" />
-            </a>
-          </div>
-        )}
-
-        <div
-          id="x-trial-timeline"
-          className={cn("w-full", status === "error" && "invisible")}
-        />
-      </div>
-
-      <Script
-        id="x-widgets"
-        src="https://platform.twitter.com/widgets.js"
-        strategy="lazyOnload"
-        onReady={mountTimeline}
-        onError={() => setStatus("error")}
-      />
+      {status === "ready" && (
+        <ol className="max-h-[40rem] divide-y divide-border/50 overflow-y-auto">
+          {posts.map((post) => (
+            <li key={post.id} className="px-4 py-5 sm:px-6">
+              <article>
+                <div className="flex gap-3">
+                  {post.authorAvatar ? (
+                    <Image
+                      src={post.authorAvatar}
+                      alt=""
+                      width={40}
+                      height={40}
+                      unoptimized
+                      className="size-10 shrink-0 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="size-10 shrink-0 rounded-full bg-accent/20" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                      <span className="font-semibold text-foreground">
+                        {post.authorName}
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        @{post.authorHandle}
+                      </span>
+                      <a
+                        href={post.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-muted-foreground hover:text-accent"
+                      >
+                        {formatTime(post.createdTimestamp, post.createdAt)}
+                      </a>
+                    </div>
+                    {post.isRepost && (
+                      <p className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">
+                        Reposted
+                      </p>
+                    )}
+                    <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-foreground sm:text-base">
+                      {post.text}
+                    </p>
+                    <FeedMedia post={post} />
+                    <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+                      <span className="inline-flex items-center gap-1">
+                        <MessageCircle className="size-3.5" />
+                        {formatCount(post.replies)}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Repeat2 className="size-3.5" />
+                        {formatCount(post.reposts)}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Heart className="size-3.5" />
+                        {formatCount(post.likes)}
+                      </span>
+                      <a
+                        href={post.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-auto inline-flex items-center gap-1 font-medium text-accent hover:underline"
+                      >
+                        View on X
+                        <ExternalLink className="size-3" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </li>
+          ))}
+        </ol>
+      )}
     </div>
   );
 }

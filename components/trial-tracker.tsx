@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { AnimatedSection } from "@/components/animated-section";
 import { SectionHeading } from "@/components/section-heading";
 import {
@@ -10,11 +11,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { XTrialFeed } from "@/components/x-trial-feed";
 import { DEFENDANTS } from "@/lib/content";
 import { AlertCircle } from "lucide-react";
 
-export function TrialTracker() {
+export function TrialTracker({ liveFeed }: { liveFeed: ReactNode }) {
   return (
     <AnimatedSection
       id="trial-tracker"
@@ -46,7 +46,7 @@ export function TrialTracker() {
         </div>
 
         <div className="mb-10">
-          <XTrialFeed />
+          {liveFeed}
         </div>
 
         <div className="space-y-3 md:hidden">
