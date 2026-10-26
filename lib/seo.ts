@@ -71,6 +71,7 @@ export function getJsonLd() {
       name: SITE_NAME,
       url: SITE_URL,
       description: SEO_DESCRIPTION,
+      sameAs: ["https://x.com/ShengThaoFiles"],
       inLanguage: "en-US",
       publisher: {
         "@type": "Organization",
@@ -136,7 +137,7 @@ export function getJsonLd() {
           name: "What is Sheng Thao charged with?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Sheng Thao faces an 8-count federal indictment for bribery, conspiracy, and honest services fraud. Co-defendants include David Duong, Andy Duong of California Waste Solutions, and Andre Jones. Defendants face up to 35 years in federal prison if convicted on all counts.",
+            text: "Sheng Thao faces an 8-count federal indictment for bribery, conspiracy, and honest services fraud. Co-defendants include David Duong, Andy Duong of California Waste Solutions, and Andre Jones. Defendants face up to 95 years in federal prison if convicted on all counts.",
           },
         },
         {

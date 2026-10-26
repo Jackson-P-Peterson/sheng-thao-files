@@ -1,5 +1,10 @@
 export const DONATE_URL = "https://opportunity.vote/donate";
 
+export const X_PROFILE = {
+  handle: "ShengThaoFiles",
+  url: "https://x.com/ShengThaoFiles",
+} as const;
+
 export const ASSETS = {
   heroImage: "/sheng-thao.webp",
   dossierPdf: "/sheng-thao-files.pdf",
@@ -33,9 +38,9 @@ export const STATS = [
     detail: "Bribery, conspiracy, and honest services fraud",
   },
   {
-    value: "35",
+    value: "95",
     label: "Years Max Prison",
-    detail: "Up to 35 years in federal prison if convicted on all counts",
+    detail: "Up to 95 years in federal prison if convicted on all counts",
   },
   {
     value: "$95K+",
@@ -115,6 +120,10 @@ export const FOOTER_SOURCES = [
   {
     label: "FBI/IRS Raid Coverage (June 20, 2024)",
     href: "https://www.justice.gov/usao-ndca",
+  },
+  {
+    label: "Live trial updates on X — @ShengThaoFiles",
+    href: "https://x.com/ShengThaoFiles",
   },
 ] as const;
 

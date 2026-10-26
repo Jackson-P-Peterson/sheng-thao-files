@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { XTrialFeed } from "@/components/x-trial-feed";
 import { DEFENDANTS } from "@/lib/content";
 import { AlertCircle } from "lucide-react";
 
@@ -23,6 +24,7 @@ export function TrialTracker() {
         <SectionHeading
           eyebrow="Trial Tracker"
           title="Federal Prosecution Status"
+          description="Follow @ShengThaoFiles on X for live trial updates, then review the current charges and defendants below."
           align="center"
           className="mx-auto"
         />
@@ -41,6 +43,10 @@ export function TrialTracker() {
             </span>
             <span className="mt-1 block sm:mt-0 sm:inline">Trial Pending</span>
           </p>
+        </div>
+
+        <div className="mb-10">
+          <XTrialFeed />
         </div>
 
         <div className="space-y-3 md:hidden">
@@ -110,7 +116,7 @@ export function TrialTracker() {
           </p>
           <p>
             If convicted on all counts, defendants face substantial federal
-            prison sentences — up to 35 years for the most serious charges.
+            prison sentences — up to 95 years for the most serious charges.
           </p>
         </div>
 

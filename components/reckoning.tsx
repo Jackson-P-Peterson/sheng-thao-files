@@ -24,7 +24,7 @@ const TIMELINE = [
     date: "January 17, 2025",
     title: "8-Count Federal Indictment",
     description:
-      "The U.S. Attorney charged Sheng Thao, David Duong, Andy Duong, and Andre Jones with bribery, conspiracy, and honest services fraud. Up to 35 years in federal prison. Trial pending.",
+      "The U.S. Attorney charged Sheng Thao, David Duong, Andy Duong, and Andre Jones with bribery, conspiracy, and honest services fraud. Up to 95 years in federal prison. Trial pending.",
   },
 ];
 
